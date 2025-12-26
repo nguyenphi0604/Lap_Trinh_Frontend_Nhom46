@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaSearch, FaShoppingCart, FaUser} from 'react-icons/fa'; // Nhớ chạy: npm install react-icons
+import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
 import styles from './Header.module.scss';
 
 const Header = () => {
@@ -9,6 +9,12 @@ const Header = () => {
         "CÂY LỚN", "HOA LAN", "PHÂN BÓN - VẬT TƯ"
     ];
 
+    const messages = [
+        "Giao hàng tận nơi toàn quốc",
+        "Bảo hành cây giống 1 đổi 1",
+        "Hỗ trợ kỹ thuật trọn đời",
+    ];
+
     return (
         <header className={styles.container}>
             {/* Tầng 1: Logo - Search - User */}
@@ -16,13 +22,13 @@ const Header = () => {
                 <div className={styles.logo}>GREEN<span>GARDEN</span></div>
 
                 <div className={styles.searchBox}>
-                    <input type="text" placeholder="Tìm cây giống..."/>
-                    <button><FaSearch/></button>
+                    <input type="text" placeholder="Tìm cây giống..." />
+                    <button><FaSearch /></button>
                 </div>
 
                 <div className={styles.actions}>
-                    <div className={styles.item}><FaUser/> Tài khoản</div>
-                    <div className={styles.item}><FaShoppingCart/> Giỏ hàng</div>
+                    <div className={styles.item}><FaUser /> Tài khoản</div>
+                    <div className={styles.item}><FaShoppingCart /> Giỏ hàng</div>
                 </div>
             </div>
 
@@ -35,9 +41,13 @@ const Header = () => {
                 </ul>
             </nav>
 
-            {/* Tầng 3: Text Carousel (Chạy chữ) */}
+            {/* Tầng 3: Text Carousel */}
             <div className={styles.carouselText}>
-                <p>Giao hàng toàn quốc - Bảo hành cây giống 1 đổi 1 - Hỗ trợ kỹ thuật trọn đời</p>
+                <div className={styles.runningContent}>
+                    {messages.map((msg, index) => (
+                        <span key={index} className={styles.msgItem}>{msg}</span>
+                    ))}
+                </div>
             </div>
         </header>
     );

@@ -1,12 +1,13 @@
-@import '../../styles/variables'; // Import đúng đường dẫn từ cấu trúc project
+@import '../../styles/variables';
 
 .container {
   width: 100%;
   font-family: sans-serif;
 }
 
+// --- TOP BAR ---
 .topBar {
-  background-color: $primary-beige; // Màu nền be nhạt
+  background-color: $primary-beige;
   padding: 15px 50px;
   display: flex;
   justify-content: space-between;
@@ -16,7 +17,7 @@
     font-size: 24px;
     font-weight: bold;
     color: $primary-green;
-    span { color: $accent-gold; }
+    span { color: $accent-lightgreen; }
   }
 
   .searchBox {
@@ -34,6 +35,8 @@
       border: none;
       padding: 0 20px;
       cursor: pointer;
+      transition: background 0.3s;
+      &:hover { background: lighten($primary-green, 10%); }
     }
   }
 
@@ -42,17 +45,24 @@
     gap: 20px;
     color: $primary-green;
     font-weight: 600;
-    .item { @include flex-center; gap: 8px; cursor: pointer; }
+    .item {
+      @include flex-center;
+      gap: 8px;
+      cursor: pointer;
+      transition: color 0.3s;
+      &:hover { color: $accent-lightgreen; }
+    }
   }
 }
 
+// --- NAVBAR ---
 .navBar {
-  background-color: $primary-green; // Nền xanh đậm
+  background-color: $primary-green;
   padding: 10px 0;
 
   ul {
     display: flex;
-    flex-wrap: wrap; // Tự động xuống dòng nếu danh mục quá dài
+    flex-wrap: wrap;
     justify-content: center;
     list-style: none;
     padding: 0;
@@ -62,23 +72,59 @@
       color: $text-white;
       text-decoration: none;
       padding: 10px 15px;
-      font-size: 13px; // Chữ nhỏ lại để vừa navbar
+      font-size: 13px;
       font-weight: bold;
       text-transform: uppercase;
       white-space: nowrap;
-
-      &:hover { color: $accent-gold; }
+      transition: color 0.3s;
+      &:hover { color: $accent-lightgreen; }
     }
   }
 }
 
+// --- CAROUSEL TEXT (ĐÃ SỬA ĐỔI) ---
 .carouselText {
   background: darken($primary-beige, 10%);
-  text-align: center;
-  padding: 8px;
+  color: $primary-green;
   font-size: 12px;
   font-weight: bold;
-  color: $primary-green;
   text-transform: uppercase;
   border-bottom: 1px solid #ddd;
+
+  // Khung chứa cố định
+  padding: 8px 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  // Nội dung chạy bên trong
+  .runningContent {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%; // Bắt đầu chạy từ mép phải màn hình
+    will-change: transform;
+    animation: scroll-text 25s linear infinite; // Tăng lên 25s cho chậm rãi dễ đọc hơn
+
+    // Tác động vào từng cụm chữ riêng lẻ
+    span {
+      display: inline-block;
+      margin-right: 150px;
+      position: relative;
+
+      &:not(:last-child):after {
+        content: "-";
+        position: absolute;
+        right: -90px; // Căn chỉnh dấu chấm vào giữa khoảng trống
+        color: $primary-green;
+        font-size: 1.5em;
+        top: -3px;
+      }
+    }
+  }
+}
+
+// Định nghĩa chuyển động
+@keyframes scroll-text {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
