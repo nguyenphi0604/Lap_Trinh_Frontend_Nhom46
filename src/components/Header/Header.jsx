@@ -19,7 +19,7 @@ const Header = () => {
         <header className={styles.container}>
             {/* Tầng 1: Logo - Search - User */}
             <div className={styles.topBar}>
-                <div className={styles.logo}>GREEN<span>GARDEN</span></div>
+                <div className={styles.logo}>FINITI<span>GARDEN</span></div>
 
                 <div className={styles.searchBox}>
                     <input type="text" placeholder="Tìm cây giống..." />

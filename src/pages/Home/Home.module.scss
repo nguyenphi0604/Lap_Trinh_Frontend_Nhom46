@@ -50,10 +50,10 @@ $font-body: 'Inter', sans-serif;
     h1 {
       font-family: $font-heading;
       font-size: 4.5rem; // Tăng kích thước
-      font-weight: 700;  // Độ đậm nhất của Montserrat
+      font-weight: 700;
       line-height: 1.1;
       margin-bottom: 25px;
-      text-transform: uppercase; // Bắt buộc in hoa
+      text-transform: uppercase;
       text-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
@@ -297,14 +297,18 @@ $font-body: 'Inter', sans-serif;
   }
 }
 
-// 6. ADVICE SECTION (STYLE MỚI)
+// 6. ADVICE SECTION
 .adviceSection {
-  background-color: $primary-green; // Sử dụng nền xanh đậm của thương hiệu
-  background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); // Thêm texture nhẹ nếu muốn
+  background-image: url('https://www.genus.gs/cdn/shop/articles/Chris_Hull_72d94b7d-1d1c-4750-9ba9-2161e6ada9e6.jpg?v=1764846107&width=1080');
   padding: 80px 10%;
   text-align: center;
   color: white;
-  margin-bottom: 0; // Nối liền với Footer
+  margin-bottom: 0;
+  text-shadow:
+          -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px  1px 0 #000,
+          1px  1px 0 #000;
 
   .adviceContent {
     max-width: 800px;

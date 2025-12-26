@@ -24,14 +24,14 @@ const Footer = () => {
                 <div className={styles.container}>
                     {/* Cột 1: Giới thiệu */}
                     <div className={styles.column}>
-                        <h4 className={styles.logo}>GREEN<span>GARDEN</span></h4>
+                        <h4 className={styles.logo}>FINITI<span>GARDEN</span></h4>
                         <p className={styles.desc}>
                             Chuyên cung cấp các loại cây giống, cây cảnh, bonsai và vật tư nông nghiệp chất lượng cao. Mang không gian xanh đến ngôi nhà của bạn.
                         </p>
                         <ul className={styles.contactInfo}>
                             <li><FaMapMarkerAlt /> 123 Đường Cây Xanh, TP. Hồ Chí Minh</li>
                             <li><FaPhoneAlt /> 1900 123 456</li>
-                            <li><FaEnvelope /> support@greengarden.com</li>
+                            <li><FaEnvelope /> support@finitigarden.com</li>
                         </ul>
                     </div>
 
@@ -78,7 +78,7 @@ const Footer = () => {
             </div>
 
             <div className={styles.bottomBar}>
-                <p>&copy; 2025 Green Garden Group. All rights reserved.</p>
+                <p>&copy; 2025 Finiti Garden Group. All rights reserved.</p>
             </div>
         </footer>
     );

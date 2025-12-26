@@ -11,7 +11,7 @@ const Home = () => {
 
     const categories = [
         { name: "Cây Ăn Trái", img: "https://plus.unsplash.com/premium_photo-1667385010648-1a16b251c4b7?q=80&w=1170&auto=format&fit=crop" },
-        { name: "Cây Văn Phòng", img: "https://gardenerspath.com/wp-content/uploads/2024/11/How-to-Water-Cactus-Feature.jpg" },
+        { name: "Cây Bonsai", img: "https://i0.wp.com/discoverandshare.org/wp-content/uploads/2025/07/79b71-evt_japanesefestival_jjmueller_8593.jpg?fit=1200%2C800&ssl=1" },
         { name: "Hoa Lan Quý", img: "https://nongnghiepdep.com/wp-content/uploads/2023/06/lan-hac-dinh-1.jpg" }
     ];
 
@@ -77,7 +77,7 @@ const Home = () => {
                         <div key={i} className={styles.card}>
                             <div className={styles.badge}>-20%</div>
                             <div className={styles.imagePlaceholder}>
-                                <img src={`https://source.unsplash.com/random/300x300?plant,${i}`} alt="Plant" onError={(e) => e.target.src='https://via.placeholder.com/300'}/>
+                                <img src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn5RMRuvFko6t5ngFif02P6ChjU51H2KeeCQ&s,${i}`} alt="Plant" onError={(e) => e.target.src='https://via.placeholder.com/300'}/>
                             </div>
                             <div className={styles.cardInfo}>
                                 <span className={styles.cateName}>Cây Ăn Trái</span>
