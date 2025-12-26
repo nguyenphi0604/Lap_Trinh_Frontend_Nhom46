@@ -1,0 +1,170 @@
+@import '../../styles/variables';
+
+.pageWrapper {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.loading, .error {
+  text-align: center; padding: 100px; font-size: 1.2rem; color: $primary-green;
+}
+
+.mainContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+// 1. HERO BANNER
+.heroBanner {
+  width: 100%;
+  height: 350px; // Chiều cao banner
+  border-radius: 30px; // Bo góc lớn [32px]
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+  .bgImage {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  }
+
+  .backBtn {
+    position: absolute; top: 20px; left: 20px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(5px);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: $primary-green;
+    display: flex; align-items: center; gap: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover { background: white; transform: translateY(-2px); }
+  }
+}
+
+// 2. CONTENT GRID (Layout chính)
+.contentGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; // Chia tỉ lệ 2 phần nội dung, 1 phần sidebar
+  gap: 40px;
+
+  @media(max-width: 900px) {
+    grid-template-columns: 1fr; // Mobile thành 1 cột
+  }
+}
+
+// --- CỘT TRÁI ---
+.leftColumn {
+  .headerInfo {
+    margin-bottom: 30px;
+
+    .productName {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: $primary-green;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+
+    .badges {
+      display: flex; gap: 10px; flex-wrap: wrap;
+
+      span {
+        padding: 5px 15px; border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+        border: 1px solid #ddd; background: white; color: #555; display: flex; align-items: center; gap: 5px;
+      }
+      .ratingBadge { svg { color: #f1c40f; } }
+    }
+  }
+
+  .descriptionSection {
+    margin-bottom: 40px;
+    h3 { font-family: 'Montserrat'; font-size: 1.5rem; margin-bottom: 15px; color: #333; }
+    p { line-height: 1.8; color: #555; font-size: 1rem; }
+  }
+
+  .gallerySection {
+    h3 { font-family: 'Montserrat'; font-size: 1.5rem; margin-bottom: 15px; color: #333; }
+    .galleryGrid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
+      img {
+        width: 100%; height: 200px; object-fit: cover; border-radius: 15px;
+        cursor: pointer; transition: 0.3s;
+        &:hover { opacity: 0.9; transform: scale(1.02); }
+      }
+    }
+  }
+}
+
+// --- CỘT PHẢI (STICKY SIDEBAR) ---
+.rightColumn {
+  position: relative;
+
+  .stickyCard {
+    background: white;
+    padding: 25px;
+    border-radius: 30px; // Bo góc lớn [32px]
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 20px;
+    border: 1px solid #eee;
+
+    .cardImage {
+      width: 100%; height: 200px; object-fit: cover; border-radius: 20px; margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .priceInfo {
+      display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px;
+
+      .priceText {
+        .oldPrice { display: block; text-decoration: line-through; color: #aaa; font-size: 0.9rem; margin-bottom: 5px; }
+        .currentPrice { display: block; font-size: 2rem; font-weight: 800; color: $primary-green; line-height: 1; }
+      }
+
+      .discountBadge {
+        background: #ffebee; color: #ef5350; font-weight: bold; padding: 5px 10px; border-radius: 6px; font-size: 0.8rem;
+      }
+    }
+
+    .actionButtons {
+      display: flex; gap: 10px; margin-bottom: 20px;
+
+      .btnAddToCart {
+        flex: 1;
+        padding: 15px;
+        background: $primary-green;
+        color: white;
+        border: none; border-radius: 15px;
+        font-weight: 700; font-size: 1rem;
+        cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+        transition: 0.3s;
+        &:hover { background: darken($primary-green, 5%); transform: translateY(-2px); }
+        &:active { transform: scale(0.98); }
+      }
+
+      .btnLike {
+        width: 55px; height: 55px;
+        border: 1px solid #eee; background: white; border-radius: 15px;
+        display: flex; align-items: center; justify-content: center;
+        color: #aaa; cursor: pointer; font-size: 1.2rem; transition: 0.3s;
+        &:hover { border-color: #ff4757; color: #ff4757; background: #fff0f1; }
+      }
+    }
+
+    .shareBtn {
+      text-align: center; color: #888; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;
+      &:hover { color: $primary-green; }
+    }
+  }
+}
