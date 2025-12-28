@@ -1,159 +1,200 @@
 @import '../../styles/variables';
 
+// Các mã màu dự phòng nếu file variables chưa có
+$green: #2d5a27;
+$light-green: #8bc34a;
+$beige: #f5f5dc;
+
 .container {
   width: 100%;
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
+  transition: all 0.3s ease;
+  background: white;
+  z-index: 1000;
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+
+    .topStrip { display: none; } // Thu gọn khi cuộn
+  }
 }
 
-// --- TOP BAR (Giữ nguyên style cũ) ---
-.topBar {
-  background-color: $primary-beige;
-  padding: 15px 50px;
+// Tầng 1: Marquee
+.topStrip {
+  background-color: #f1f1f1;
+  padding: 5px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+// Tầng 2: Main Header
+.mainHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 50px;
+  background-color: $beige;
 
   .logo {
     font-size: 24px;
     font-weight: bold;
-    color: $primary-green;
-    span { color: $accent-lightgreen; }
+    color: $green;
+    cursor: pointer;
+    span { color: $light-green; }
   }
 
-  .searchBox {
+  .searchBar {
     display: flex;
-    width: 40%;
+    flex: 0 1 40%;
+
     input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid $primary-green;
+      flex: 1;
+      padding: 10px 15px;
+      border: 1px solid $green;
+      border-radius: 4px 0 0 4px;
       outline: none;
-      // Style cũ của bạn (nền trắng mặc định)
     }
-    button {
-      background: $primary-green;
+
+    .searchBtn {
+      background: $green;
       color: white;
       border: none;
       padding: 0 20px;
+      border-radius: 0 4px 4px 0;
       cursor: pointer;
-      transition: background 0.3s;
-      &:hover { background: lighten($primary-green, 10%); }
+      &:hover { background: lighten($green, 10%); }
     }
   }
 
-  .actions {
+  .userActions {
     display: flex;
-    gap: 20px;
-    color: $primary-green;
-    font-weight: 600;
+    gap: 25px;
+    align-items: center;
 
-    .item {
+    .actionItem {
       display: flex;
       align-items: center;
       gap: 8px;
       cursor: pointer;
-      transition: color 0.3s;
-      &:hover { color: $accent-lightgreen; }
+      font-weight: 600;
+      color: $green;
 
-      // --- BỔ SUNG: Class này để hiện chấm đỏ số lượng (Style cũ chưa có) ---
-      .cartWrapper {
+      .cartIcon {
         position: relative;
-        display: flex;
-        align-items: center;
+        font-size: 20px;
 
-        .badge {
+        .cartBadge {
           position: absolute;
           top: -8px;
           right: -10px;
-          background-color: #ff4757; // Màu đỏ
+          background: #ff4757;
           color: white;
           font-size: 10px;
-          height: 16px;
           width: 16px;
+          height: 16px;
+          border-radius: 50%;
           display: flex;
           justify-content: center;
           align-items: center;
-          border-radius: 50%;
         }
+      }
+    }
+
+    // Dropdown Logic cho tài khoản
+    .accountBox {
+      position: relative;
+      cursor: pointer;
+
+      .userInfo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: $green;
+      }
+
+      .userDropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        list-style: none;
+        padding: 10px 0;
+        min-width: 160px;
+        border-radius: 4px;
+        display: none; // Mặc định ẩn
+        z-index: 10;
+
+        li {
+          padding: 10px 20px;
+          font-size: 14px;
+          color: #333;
+          &:hover { background: #f5f5f5; }
+        }
+
+        .logoutBtn {
+          border-top: 1px solid #eee;
+          color: #ff4757;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+      }
+
+      &:hover .userDropdown {
+        display: block; // Hiện khi hover vào accountBox
       }
     }
   }
 }
 
-// --- NAVBAR (Giữ nguyên style cũ) ---
-.navBar {
-  background-color: $primary-green;
-  padding: 10px 0;
+// Tầng 3: Menu danh mục
+.mainNav {
+  background-color: $green;
 
   ul {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     list-style: none;
     padding: 0;
     margin: 0;
 
-    li a {
-      color: white; // Hoặc $text-white nếu bạn có biến này
-      text-decoration: none;
-      padding: 10px 15px;
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-      white-space: nowrap;
-      transition: color 0.3s;
-      &:hover { color: $accent-lightgreen; }
-    }
-  }
-}
+    li {
+      &.active a {
+        background-color: rgba(255,255,255,0.1);
+        color: $light-green;
+      }
 
-// --- CAROUSEL TEXT (Cập nhật logic chạy chữ để khớp với Header.jsx) ---
-.carouselText {
-  background: darken($primary-beige, 10%);
-  color: $primary-green;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-bottom: 1px solid #ddd;
-  padding: 8px 0;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+      a {
+        display: block;
+        padding: 12px 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: 0.3s;
 
-  // Cấu trúc mới: .runningContent thay vì thẻ p
-  .runningContent {
-    display: inline-block;
-    white-space: nowrap;
-    padding-left: 100%;
-    will-change: transform;
-    animation: scroll-text 25s linear infinite;
-
-    .msgItem {
-      display: inline-block;
-      margin-right: 150px;
-      position: relative;
-
-      &:not(:last-child):after {
-        content: "-";
-        position: absolute;
-        right: -90px;
-        color: $primary-green;
-        font-size: 1.5em;
-        top: -3px;
+        &:hover { color: $light-green; }
       }
     }
   }
 }
 
-@keyframes scroll-text {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
+// Responsive
 @media (max-width: 768px) {
-  .topBar {
+  .mainHeader {
     flex-direction: column;
-    gap: 15px;
-    .searchBox, .actions { width: 100%; justify-content: space-between; }
+    padding: 10px;
+    gap: 10px;
+    .searchBar { width: 100%; }
+  }
+  .mainNav ul {
+    flex-wrap: wrap;
+    li a { padding: 10px; font-size: 11px; }
   }
 }

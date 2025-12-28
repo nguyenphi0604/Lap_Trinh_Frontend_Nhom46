@@ -1,20 +1,36 @@
 import React, { useState } from 'react';
 import styles from './Auth.module.scss';
-import { Link, useNavigate } from 'react-router-dom'; // Thêm useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 
 const Auth = () => {
     const [isLogin, setIsLogin] = useState(true);
-    const navigate = useNavigate(); // Khởi tạo hàm điều hướng
+    const [fullName, setFullName] = useState(''); // Lưu họ tên
+    const [email, setEmail] = useState('');       // Lưu email
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Giả lập logic xử lý:
-        // Trong thực tế, bạn sẽ gọi API ở đây. Nếu thành công thì mới chuyển trang.
-        console.log(isLogin ? "Đang đăng nhập..." : "Đang đăng ký...");
+        // 1. Xác định tên hiển thị:
+        // Nếu Đăng ký: lấy từ ô "Họ và tên".
+        // Nếu Đăng nhập: lấy phần trước chữ @ của Email (ví dụ: phi0604@gmail.com -> phi0604)
+        const displayName = !isLogin ? fullName : email.split('@')[0];
 
-        // Sau khi xử lý xong, điều hướng người dùng về trang chủ
+        // 2. Tạo object người dùng
+        const userData = {
+            username: displayName,
+            email: email,
+        };
+
+        // 3. Lưu vào localStorage (Khóa 'user' phải khớp với Header)
+        localStorage.setItem('user', JSON.stringify(userData));
+
+        // 4. Thông báo và điều hướng
+        alert(`${isLogin ? 'Đăng nhập' : 'Đăng ký'} thành công!`);
         navigate('/');
+
+        // 5. Làm mới trang để Header cập nhật lại trạng thái mới nhất
+        window.location.reload();
     };
 
     return (
@@ -30,11 +46,31 @@ const Auth = () => {
                     <h2>{isLogin ? 'Đăng Nhập' : 'Đăng Ký'}</h2>
                     <p>Chào mừng bạn quay trở lại!</p>
 
-                    {/* Thay onClick của form bằng onSubmit */}
                     <form onSubmit={handleSubmit}>
-                        {!isLogin && <input type="text" placeholder="Họ và tên" required />}
-                        <input type="email" placeholder="Địa chỉ Email" required />
-                        <input type="password" placeholder="Mật khẩu" required />
+                        {/* Nếu là Đăng ký thì mới hiện ô nhập Họ và tên */}
+                        {!isLogin && (
+                            <input
+                                type="text"
+                                placeholder="Họ và tên"
+                                value={fullName}
+                                onChange={(e) => setFullName(e.target.value)}
+                                required
+                            />
+                        )}
+
+                        <input
+                            type="email"
+                            placeholder="Địa chỉ Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Mật khẩu"
+                            required
+                        />
 
                         <button type="submit">
                             {isLogin ? 'Đăng Nhập' : 'Đăng Ký'}

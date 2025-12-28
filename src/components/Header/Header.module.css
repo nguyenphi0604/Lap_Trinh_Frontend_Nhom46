@@ -1,0 +1,183 @@
+.container {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  transition: all 0.3s ease;
+  background: white;
+  z-index: 1000;
+}
+.container.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+.container.sticky .topStrip {
+  display: none;
+}
+
+.topStrip {
+  background-color: #f1f1f1;
+  padding: 5px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.mainHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #f5f5dc;
+}
+.mainHeader .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2d5a27;
+  cursor: pointer;
+}
+.mainHeader .logo span {
+  color: #8bc34a;
+}
+.mainHeader .searchBar {
+  display: flex;
+  flex: 0 1 40%;
+}
+.mainHeader .searchBar input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #2d5a27;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+.mainHeader .searchBar .searchBtn {
+  background: #2d5a27;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+.mainHeader .searchBar .searchBtn:hover {
+  background: rgb(62.7906976744, 125.5813953488, 54.4186046512);
+}
+.mainHeader .userActions {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+.mainHeader .userActions .actionItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #2d5a27;
+}
+.mainHeader .userActions .actionItem .cartIcon {
+  position: relative;
+  font-size: 20px;
+}
+.mainHeader .userActions .actionItem .cartIcon .cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #ff4757;
+  color: white;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainHeader .userActions .accountBox {
+  position: relative;
+  cursor: pointer;
+}
+.mainHeader .userActions .accountBox .userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #2d5a27;
+}
+.mainHeader .userActions .accountBox .userDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 160px;
+  border-radius: 4px;
+  display: none;
+  z-index: 10;
+}
+.mainHeader .userActions .accountBox .userDropdown li {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #333;
+}
+.mainHeader .userActions .accountBox .userDropdown li:hover {
+  background: #f5f5f5;
+}
+.mainHeader .userActions .accountBox .userDropdown .logoutBtn {
+  border-top: 1px solid #eee;
+  color: #ff4757;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mainHeader .userActions .accountBox:hover .userDropdown {
+  display: block;
+}
+
+.mainNav {
+  background-color: #2d5a27;
+}
+.mainNav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mainNav ul li.active a {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #8bc34a;
+}
+.mainNav ul li a {
+  display: block;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+.mainNav ul li a:hover {
+  color: #8bc34a;
+}
+
+@media (max-width: 768px) {
+  .mainHeader {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
+  .mainHeader .searchBar {
+    width: 100%;
+  }
+  .mainNav ul {
+    flex-wrap: wrap;
+  }
+  .mainNav ul li a {
+    padding: 10px;
+    font-size: 11px;
+  }
+}
+
+/*# sourceMappingURL=Header.module.css.map */
