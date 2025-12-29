@@ -1,0 +1,122 @@
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  position: relative;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+.card:hover .addBtn {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card .badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #ff4757;
+  color: white;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 4px;
+  z-index: 10;
+}
+.card .imagePlaceholder {
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  background: #f1f1f1;
+}
+.card .imagePlaceholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card .cardInfo {
+  text-align: left;
+}
+.card .cardInfo .cateName {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: uppercase;
+}
+.card .cardInfo h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  margin: 5px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card .cardInfo .priceRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+}
+.card .cardInfo .priceRow .price {
+  color: #22745e;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.card .cardInfo .rating {
+  color: #f1c40f;
+  font-size: 0.8rem;
+}
+.card .cardInfo .rating span {
+  color: #aaa;
+  margin-left: 5px;
+}
+.card .addBtn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #22745e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.3s;
+}
+.card .addBtn:hover {
+  background: rgb(22.44, 76.56, 62.04);
+}
+.card .priceRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+.card .priceRow .price {
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.card .priceRow .oldPrice {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 0.9rem;
+}
+.card .card {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/*# sourceMappingURL=ProductCard.module.css.map */

@@ -1,0 +1,179 @@
+.wrapper {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.productMain {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  align-items: start;
+}
+@media (max-width: 992px) {
+  .productMain {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 25px;
+  }
+}
+
+.imageSection {
+  position: sticky;
+  top: 100px;
+}
+.imageSection img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  display: block;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 992px) {
+  .imageSection {
+    position: relative;
+    top: 0;
+  }
+}
+
+.infoSection .categoryBadge {
+  display: inline-block;
+  background: rgba(34, 116, 94, 0.1);
+  color: #22745e;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.infoSection h1 {
+  font-size: clamp(24px, 4vw, 36px);
+  margin: 15px 0;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+.infoSection .priceRow {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+.infoSection .priceRow .currentPrice {
+  font-size: 32px;
+  font-weight: 800;
+  color: #d32f2f;
+}
+.infoSection .priceRow .oldPrice {
+  text-decoration: line-through;
+  color: #adb5bd;
+  font-size: 20px;
+}
+.infoSection .description {
+  color: #495057;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+.infoSection .actionBox {
+  display: flex;
+  gap: 15px;
+  margin: 35px 0;
+}
+.infoSection .actionBox .quantitySelector {
+  display: flex;
+  border: 1.5px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.infoSection .actionBox .quantitySelector button {
+  width: 45px;
+  height: 45px;
+  border: none;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+}
+.infoSection .actionBox .quantitySelector button:hover {
+  background: #f8f9fa;
+  color: #22745e;
+}
+.infoSection .actionBox .quantitySelector span {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-left: 1.5px solid #dee2e6;
+  border-right: 1.5px solid #dee2e6;
+}
+.infoSection .actionBox .addBtn {
+  flex: 1;
+  background: #22745e;
+  color: #ffffff;
+  border: none;
+  padding: 0 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease-in-out;
+}
+.infoSection .actionBox .addBtn:hover {
+  background: rgb(24.752, 84.448, 68.432);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34, 116, 94, 0.3);
+}
+.infoSection .trustBadges {
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+.infoSection .trustBadges .badgeItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #6c757d;
+}
+.infoSection .trustBadges .badgeItem svg {
+  font-size: 20px;
+  color: #22745e;
+}
+
+@media (max-width: 480px) {
+  .actionBox {
+    flex-direction: column;
+  }
+  .actionBox .quantitySelector {
+    width: 100%;
+    justify-content: center;
+  }
+  .actionBox .quantitySelector button {
+    flex: 1;
+  }
+  .actionBox .quantitySelector span {
+    flex: 1;
+  }
+  .actionBox .addBtn {
+    padding: 15px;
+  }
+}
+
+/*# sourceMappingURL=ProductDetail.module.css.map */
