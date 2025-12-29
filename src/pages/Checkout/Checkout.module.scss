@@ -1,8 +1,16 @@
 @import '../../styles/variables';
 
-.wrapper { background: #f8f9fa; min-height: 100vh; }
+// 1. Thêm font mặc định cho toàn bộ trang Checkout để không bị lọt font Serif
+.wrapper {
+  background: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
 .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-.pageTitle { font-family: 'Montserrat'; color: $primary-green; text-align: center; margin-bottom: 40px; }
+
+// Thêm sans-serif dự phòng
+.pageTitle { font-family: 'Montserrat', sans-serif; color: $primary-green; text-align: center; margin-bottom: 40px; }
 
 .grid {
   display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px;
@@ -12,7 +20,7 @@
 // Cột Form
 .formSection {
   background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  h2 { font-family: 'Montserrat'; font-size: 1.2rem; margin-bottom: 25px; color: #333; display: flex; align-items: center; gap: 10px; }
+  h2 { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 25px; color: #333; display: flex; align-items: center; gap: 10px; }
 
   .inputGroup {
     margin-bottom: 20px;
@@ -25,7 +33,9 @@
     }
 
     input, textarea {
-      width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; outline: none; font-family: 'Inter'; font-size: 1rem;
+      width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
       &:focus { border-color: $primary-green; box-shadow: 0 0 0 3px rgba($primary-green, 0.1); }
     }
     textarea { height: 100px; resize: none; }
@@ -35,7 +45,7 @@
 // Cột Tóm tắt
 .summarySection {
   background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); height: fit-content;
-  h2 { font-family: 'Montserrat'; font-size: 1.2rem; margin-bottom: 20px; color: #333; }
+  h2 { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 20px; color: #333; }
 
   .itemList {
     max-height: 300px; overflow-y: auto; margin-bottom: 20px; padding-right: 5px;
@@ -65,6 +75,9 @@
 
   .btnOrder {
     width: 100%; margin-top: 25px; padding: 18px; background: $primary-green; color: white; border: none; border-radius: 10px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s;
+
+    font-family: 'Montserrat', sans-serif;
+
     &:hover { background: darken($primary-green, 5%); box-shadow: 0 5px 15px rgba($primary-green, 0.3); }
   }
 

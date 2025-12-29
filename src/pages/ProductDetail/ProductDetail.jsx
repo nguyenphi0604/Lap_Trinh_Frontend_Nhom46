@@ -31,7 +31,6 @@ const ProductDetail = () => {
             <Header />
 
             <div className={styles.mainContainer}>
-                {/* 1. HERO BANNER ẢNH TO (Giống GameDetail) */}
                 <div className={styles.heroBanner}>
                     <img src={product.image} alt={product.name} className={styles.bgImage} />
                     <div className={styles.overlay}></div>
@@ -40,10 +39,8 @@ const ProductDetail = () => {
                     </button>
                 </div>
 
-                {/* 2. GRID LAYOUT (Chia 2 cột: Nội dung chính & Sidebar dính) */}
                 <div className={styles.contentGrid}>
 
-                    {/* CỘT TRÁI: THÔNG TIN CHI TIẾT */}
                     <div className={styles.leftColumn}>
                         <div className={styles.headerInfo}>
                             <h1 className={styles.productName}>{product.name}</h1>
@@ -59,7 +56,6 @@ const ProductDetail = () => {
                             <p>{product.description || "Mô tả đang được cập nhật. Cây xanh tốt, rễ khỏe, đã được thuần dưỡng tại vườn ươm GreenGarden."}</p>
                         </div>
 
-                        {/* Gallery giả lập (Nếu DB có mảng ảnh thì map ra, không thì ẩn đi) */}
                         <div className={styles.gallerySection}>
                             <h3>Hình ảnh thực tế</h3>
                             <div className={styles.galleryGrid}>
@@ -70,7 +66,6 @@ const ProductDetail = () => {
                         </div>
                     </div>
 
-                    {/* CỘT PHẢI: STICKY SIDEBAR (Giống GameDetail) */}
                     <div className={styles.rightColumn}>
                         <div className={styles.stickyCard}>
                             <img src={product.image} alt={product.name} className={styles.cardImage} />
