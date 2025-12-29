@@ -1,108 +1,160 @@
-import React, { useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { addToCart } from '../../redux/cartSlice';
+import React, { useEffect, useState, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { fetchProducts } from '../../redux/productSlice';
+import { addToCart } from '../../redux/cartSlice';
+import ProductCard from '../../components/ProductCard/ProductCard';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import { FaArrowLeft, FaShoppingBag, FaStar, FaHeart, FaShareAlt } from 'react-icons/fa';
+import { FaCartPlus, FaTruck, FaShieldAlt, FaLeaf, FaChevronRight } from 'react-icons/fa';
 import styles from './ProductDetail.module.scss';
 
 const ProductDetail = () => {
     const { id } = useParams();
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
+
+    // States
+    const [quantity, setQuantity] = useState(1);
+    const [selectedImg, setSelectedImg] = useState("");
+
     const { items: products, status } = useAppSelector(state => state.products);
 
-    // Gọi API nếu chưa có dữ liệu
+    // 1. Tối ưu tìm kiếm sản phẩm bằng useMemo
+    const product = useMemo(() => {
+        return products.find(p => p.id === parseInt(id));
+    }, [products, id]);
+
+    // 2. Tối ưu lấy sản phẩm liên quan
+    const relatedProducts = useMemo(() => {
+        if (!product) return [];
+        return products
+            .filter(p => p.category === product.category && p.id !== product.id)
+            .slice(0, 4);
+    }, [products, product]);
+
     useEffect(() => {
         if (status === 'idle') dispatch(fetchProducts());
-    }, [status, dispatch]);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [id, status, dispatch]);
 
-    // Tìm sản phẩm theo ID (chuyển id sang string để so sánh an toàn)
-    const product = products.find((p) => String(p.id) === String(id));
+    // 3. Cập nhật ảnh mặc định khi đổi sản phẩm
+    useEffect(() => {
+        if (product) {
+            // Ưu tiên lấy ảnh đầu tiên trong mảng images, nếu không có lấy image đơn
+            setSelectedImg(product.images?.[0] || product.image);
+            setQuantity(1); // Reset số lượng về 1 khi đổi sản phẩm
+        }
+    }, [product]);
 
-    // Loading UI
-    if (status === 'loading') return <div className={styles.loading}>Đang tải...</div>;
-    if (!product) return <div className={styles.error}>Không tìm thấy sản phẩm!</div>;
+    if (status === 'loading' || !product) {
+        return (
+            <div className={styles.loadingWrapper}>
+                <Header />
+                <div className={styles.loader}>
+                    <div className={styles.spinner}></div>
+                    <p>Đang tải thông tin cây xanh...</p>
+                </div>
+                <Footer />
+            </div>
+        );
+    }
+
+    const handleAddToCart = () => {
+        dispatch(addToCart({ ...product, quantity }));
+        // Thay alert bằng Toast hoặc Notification sẽ chuyên nghiệp hơn
+    };
 
     return (
-        <div className={styles.pageWrapper}>
+        <div className={styles.wrapper}>
             <Header />
 
-            <div className={styles.mainContainer}>
-                {/* 1. HERO BANNER ẢNH TO (Giống GameDetail) */}
-                <div className={styles.heroBanner}>
-                    <img src={product.image} alt={product.name} className={styles.bgImage} />
-                    <div className={styles.overlay}></div>
-                    <button onClick={() => navigate(-1)} className={styles.backBtn}>
-                        <FaArrowLeft /> Quay lại
-                    </button>
-                </div>
+            <main className={styles.container}>
+                {/* Breadcrumb đơn giản */}
+                <nav className={styles.breadcrumb}>
+                    <Link to="/">Trang chủ</Link> <FaChevronRight />
+                    <span>{product.category}</span> <FaChevronRight />
+                    <strong>{product.name}</strong>
+                </nav>
 
-                {/* 2. GRID LAYOUT (Chia 2 cột: Nội dung chính & Sidebar dính) */}
-                <div className={styles.contentGrid}>
+                <div className={styles.productMain}>
+                    {/* GALLERY ẢNH NHIỀU GÓC MẶT */}
+                    <div className={styles.imageSection}>
+                        <div className={styles.mainImage}>
+                            <img src={selectedImg} alt={product.name} />
+                            {product.oldPrice && <div className={styles.saleBadge}>Sale</div>}
+                        </div>
 
-                    {/* CỘT TRÁI: THÔNG TIN CHI TIẾT */}
-                    <div className={styles.leftColumn}>
-                        <div className={styles.headerInfo}>
-                            <h1 className={styles.productName}>{product.name}</h1>
-                            <div className={styles.badges}>
-                                <span className={styles.ratingBadge}><FaStar /> {product.rating || 5.0}</span>
-                                <span className={styles.tagBadge}>{product.category || 'Cây Cảnh'}</span>
-                                <span className={styles.tagBadge}>Còn hàng</span>
+                        {/* Hiển thị list ảnh nhỏ nếu có mảng images trong db.json */}
+                        {product.images && product.images.length > 1 && (
+                            <div className={styles.thumbList}>
+                                {product.images.map((img, index) => (
+                                    <div
+                                        key={index}
+                                        className={`${styles.thumbItem} ${selectedImg === img ? styles.active : ''}`}
+                                        onClick={() => setSelectedImg(img)}
+                                    >
+                                        <img src={img} alt={`Góc ${index}`} />
+                                    </div>
+                                ))}
                             </div>
+                        )}
+                    </div>
+
+                    {/* THÔNG TIN SẢN PHẨM */}
+                    <div className={styles.productContent}>
+                        <span className={styles.categoryName}>{product.category}</span>
+                        <h1>{product.name}</h1>
+
+                        <div className={styles.priceContainer}>
+                            <span className={styles.price}>
+                                {new Intl.NumberFormat('vi-VN').format(product.price)}đ
+                            </span>
+                            {product.oldPrice && (
+                                <span className={styles.oldPrice}>
+                                    {new Intl.NumberFormat('vi-VN').format(product.oldPrice)}đ
+                                </span>
+                            )}
                         </div>
 
-                        <div className={styles.descriptionSection}>
-                            <h3>Giới thiệu</h3>
-                            <p>{product.description || "Mô tả đang được cập nhật. Cây xanh tốt, rễ khỏe, đã được thuần dưỡng tại vườn ươm GreenGarden."}</p>
+                        <p className={styles.shortDesc}>{product.description}</p>
+
+                        <div className={styles.purchaseZone}>
+                            <div className={styles.qtyBox}>
+                                <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>-</button>
+                                <input type="number" value={quantity} readOnly />
+                                <button onClick={() => setQuantity(q => q + 1)}>+</button>
+                            </div>
+                            <button className={styles.addBtn} onClick={handleAddToCart}>
+                                <FaCartPlus /> THÊM VÀO GIỎ HÀNG
+                            </button>
                         </div>
 
-                        {/* Gallery giả lập (Nếu DB có mảng ảnh thì map ra, không thì ẩn đi) */}
-                        <div className={styles.gallerySection}>
-                            <h3>Hình ảnh thực tế</h3>
-                            <div className={styles.galleryGrid}>
-                                {/* Dùng lại ảnh chính làm demo gallery */}
-                                <img src={product.image} alt="Góc chụp 1" />
-                                <img src="https://source.unsplash.com/random/300x300?leaf" alt="Góc chụp 2" />
+                        <div className={styles.policy}>
+                            <div className={styles.policyItem}>
+                                <FaTruck /> <div><strong>Giao hàng</strong><span>Giao hỏa tốc 2h nội thành</span></div>
+                            </div>
+                            <div className={styles.policyItem}>
+                                <FaShieldAlt /> <div><strong>Bảo hành</strong><span>Đổi trả trong 7 ngày nếu héo</span></div>
+                            </div>
+                            <div className={styles.policyItem}>
+                                <FaLeaf /> <div><strong>Ưu đãi</strong><span>Tặng kèm cẩm nang chăm sóc</span></div>
                             </div>
                         </div>
                     </div>
-
-                    {/* CỘT PHẢI: STICKY SIDEBAR (Giống GameDetail) */}
-                    <div className={styles.rightColumn}>
-                        <div className={styles.stickyCard}>
-                            <img src={product.image} alt={product.name} className={styles.cardImage} />
-
-                            <div className={styles.priceInfo}>
-                                <div className={styles.priceText}>
-                                    <span className={styles.oldPrice}>{(product.price * 1.2).toLocaleString()}đ</span>
-                                    <span className={styles.currentPrice}>{product.price.toLocaleString()}đ</span>
-                                </div>
-                                <span className={styles.discountBadge}>-20%</span>
-                            </div>
-
-                            <div className={styles.actionButtons}>
-                                <button
-                                    className={styles.btnAddToCart}
-                                    onClick={() => dispatch(addToCart(product))}
-                                >
-                                    <FaShoppingBag /> Thêm vào giỏ
-                                </button>
-                                <button className={styles.btnLike}>
-                                    <FaHeart />
-                                </button>
-                            </div>
-
-                            <div className={styles.shareBtn}>
-                                <FaShareAlt /> Chia sẻ sản phẩm này
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
+
+                {/* SẢN PHẨM LIÊN QUAN */}
+                {relatedProducts.length > 0 && (
+                    <section className={styles.relatedSection}>
+                        <h2 className={styles.sectionTitle}>Sản phẩm tương tự</h2>
+                        <div className={styles.relatedGrid}>
+                            {relatedProducts.map(item => (
+                                <ProductCard key={item.id} product={item} />
+                            ))}
+                        </div>
+                    </section>
+                )}
+            </main>
 
             <Footer />
         </div>
