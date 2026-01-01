@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom'; // Đã thêm Link ở đây
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { fetchProducts } from '../../redux/productSlice';
 import { addToCart } from '../../redux/cartSlice';
@@ -12,19 +12,15 @@ import styles from './ProductDetail.module.scss';
 const ProductDetail = () => {
     const { id } = useParams();
     const dispatch = useAppDispatch();
-
-    // States
     const [quantity, setQuantity] = useState(1);
     const [selectedImg, setSelectedImg] = useState("");
 
     const { items: products, status } = useAppSelector(state => state.products);
 
-    // 1. Tối ưu tìm kiếm sản phẩm bằng useMemo
     const product = useMemo(() => {
         return products.find(p => p.id === parseInt(id));
     }, [products, id]);
 
-    // 2. Tối ưu lấy sản phẩm liên quan
     const relatedProducts = useMemo(() => {
         if (!product) return [];
         return products
@@ -37,12 +33,10 @@ const ProductDetail = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [id, status, dispatch]);
 
-    // 3. Cập nhật ảnh mặc định khi đổi sản phẩm
     useEffect(() => {
         if (product) {
-            // Ưu tiên lấy ảnh đầu tiên trong mảng images, nếu không có lấy image đơn
             setSelectedImg(product.images?.[0] || product.image);
-            setQuantity(1); // Reset số lượng về 1 khi đổi sản phẩm
+            setQuantity(1);
         }
     }, [product]);
 
@@ -61,7 +55,7 @@ const ProductDetail = () => {
 
     const handleAddToCart = () => {
         dispatch(addToCart({ ...product, quantity }));
-        // Thay alert bằng Toast hoặc Notification sẽ chuyên nghiệp hơn
+        // Bạn có thể cài thêm thư viện react-hot-toast để hiện thông báo ở đây
     };
 
     return (
@@ -69,22 +63,23 @@ const ProductDetail = () => {
             <Header />
 
             <main className={styles.container}>
-                {/* Breadcrumb đơn giản */}
                 <nav className={styles.breadcrumb}>
-                    <Link to="/">Trang chủ</Link> <FaChevronRight />
-                    <span>{product.category}</span> <FaChevronRight />
+                    <Link to="/">Trang chủ</Link> <FaChevronRight className={styles.icon} />
+                    <Link to={`/category/${product.category}`}>{product.category}</Link> <FaChevronRight className={styles.icon} />
                     <strong>{product.name}</strong>
                 </nav>
 
                 <div className={styles.productMain}>
-                    {/* GALLERY ẢNH NHIỀU GÓC MẶT */}
                     <div className={styles.imageSection}>
                         <div className={styles.mainImage}>
                             <img src={selectedImg} alt={product.name} />
-                            {product.oldPrice && <div className={styles.saleBadge}>Sale</div>}
+                            {product.oldPrice && (
+                                <div className={styles.saleBadge}>
+                                    -{Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}%
+                                </div>
+                            )}
                         </div>
 
-                        {/* Hiển thị list ảnh nhỏ nếu có mảng images trong db.json */}
                         {product.images && product.images.length > 1 && (
                             <div className={styles.thumbList}>
                                 {product.images.map((img, index) => (
@@ -100,21 +95,22 @@ const ProductDetail = () => {
                         )}
                     </div>
 
-                    {/* THÔNG TIN SẢN PHẨM */}
                     <div className={styles.productContent}>
                         <span className={styles.categoryName}>{product.category}</span>
-                        <h1>{product.name}</h1>
+                        <h1 className={styles.title}>{product.name}</h1>
 
                         <div className={styles.priceContainer}>
                             <span className={styles.price}>
-                                {new Intl.NumberFormat('vi-VN').format(product.price)}đ
+                                {product.price?.toLocaleString()}đ
                             </span>
                             {product.oldPrice && (
                                 <span className={styles.oldPrice}>
-                                    {new Intl.NumberFormat('vi-VN').format(product.oldPrice)}đ
+                                    {product.oldPrice?.toLocaleString()}đ
                                 </span>
                             )}
                         </div>
+
+                        <div className={styles.divider}></div>
 
                         <p className={styles.shortDesc}>{product.description}</p>
 
@@ -131,19 +127,21 @@ const ProductDetail = () => {
 
                         <div className={styles.policy}>
                             <div className={styles.policyItem}>
-                                <FaTruck /> <div><strong>Giao hàng</strong><span>Giao hỏa tốc 2h nội thành</span></div>
+                                <div className={styles.policyIcon}><FaTruck /></div>
+                                <div><strong>Giao hàng</strong><span>Hỏa tốc nội thành trong 2h</span></div>
                             </div>
                             <div className={styles.policyItem}>
-                                <FaShieldAlt /> <div><strong>Bảo hành</strong><span>Đổi trả trong 7 ngày nếu héo</span></div>
+                                <div className={styles.policyIcon}><FaShieldAlt /></div>
+                                <div><strong>Bảo hành</strong><span>7 ngày đổi trả nếu cây lỗi</span></div>
                             </div>
                             <div className={styles.policyItem}>
-                                <FaLeaf /> <div><strong>Ưu đãi</strong><span>Tặng kèm cẩm nang chăm sóc</span></div>
+                                <div className={styles.policyIcon}><FaLeaf /></div>
+                                <div><strong>Cam kết</strong><span>Cây khỏe mạnh, đúng chủng loại</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* SẢN PHẨM LIÊN QUAN */}
                 {relatedProducts.length > 0 && (
                     <section className={styles.relatedSection}>
                         <h2 className={styles.sectionTitle}>Sản phẩm tương tự</h2>
