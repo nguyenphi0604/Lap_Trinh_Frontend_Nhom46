@@ -27,7 +27,7 @@ const Cart = () => {
                         <div className={styles.items}>
                             {cartItems.map((item, index) => (
                                 <div key={index} className={styles.item}>
-                                    <img src={item.image} alt={item.name} />
+                                    <img src={item.images?.[0] || item.image} alt={item.name} />
                                     <div className={styles.info}>
                                         <h3>{item.name}</h3>
                                         <p className={styles.price}>{item.price.toLocaleString()}đ</p>

@@ -17,8 +17,13 @@ const ProductDetail = () => {
 
     const { items: products, status } = useAppSelector(state => state.products);
 
+    // const product = useMemo(() => {
+    //     return products.find(p => p.id === parseInt(id));
+    // }, [products, id]);
+
     const product = useMemo(() => {
-        return products.find(p => p.id === parseInt(id));
+        if (!products.length) return null;
+        return products.find(p => String(p.id) === String(id));
     }, [products, id]);
 
     const relatedProducts = useMemo(() => {
