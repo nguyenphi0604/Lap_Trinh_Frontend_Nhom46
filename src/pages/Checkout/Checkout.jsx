@@ -66,7 +66,7 @@ const Checkout = () => {
                             {cartItems.map(item => (
                                 <div key={item.id} className={styles.item}>
                                     <div className={styles.imgWrapper}>
-                                        <img src={item.image} alt={item.name} />
+                                        <img src={item.images?.[0] || item.image} alt={item.name} />
                                         <span className={styles.qtyBadge}>{item.quantity}</span>
                                     </div>
                                     <div className={styles.info}>

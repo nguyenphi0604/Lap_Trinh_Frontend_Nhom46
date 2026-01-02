@@ -28,7 +28,7 @@ const ProductCard = ({ product }) => {
 
             <div className={styles.imagePlaceholder}>
                 <img
-                    src={product.image}
+                    src={product.images?.[0] || product.image}
                     alt={product.name}
                     onError={(e) => e.target.src = 'https://via.placeholder.com/300?text=No+Image'}
                 />
