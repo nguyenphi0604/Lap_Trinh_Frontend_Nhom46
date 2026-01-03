@@ -9,7 +9,7 @@ import { FaChevronRight, FaHome } from 'react-icons/fa';
 import styles from './Category.module.scss';
 
 const Category = () => {
-    const { type } = useParams(); // Lấy slug từ URL (vd: cay-an-trai)
+    const { type } = useParams();
     const dispatch = useAppDispatch();
     const { items: products, status } = useAppSelector(state => state.products);
 
@@ -17,7 +17,6 @@ const Category = () => {
         if (status === 'idle') dispatch(fetchProducts());
     }, [status, dispatch]);
 
-    // Hàm chuyển đổi Slug URL sang Tên Category trong DB
     const getCategoryName = (slug) => {
         const map = {
             'cay-an-trai': "CÂY ĂN TRÁI",
@@ -40,7 +39,6 @@ const Category = () => {
     // Lọc sản phẩm
     const filteredProducts = useMemo(() => {
         if (!categoryName || categoryName === "TẤT CẢ SẢN PHẨM") return products;
-        // So sánh tương đối (có thể cần toUpperCase để chính xác)
         return products.filter(p => p.category === categoryName);
     }, [products, categoryName]);
 

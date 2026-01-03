@@ -4,32 +4,24 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Auth = () => {
     const [isLogin, setIsLogin] = useState(true);
-    const [fullName, setFullName] = useState(''); // Lưu họ tên
-    const [email, setEmail] = useState('');       // Lưu email
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // 1. Xác định tên hiển thị:
-        // Nếu Đăng ký: lấy từ ô "Họ và tên".
-        // Nếu Đăng nhập: lấy phần trước chữ @ của Email (ví dụ: phi0604@gmail.com -> phi0604)
         const displayName = !isLogin ? fullName : email.split('@')[0];
 
-        // 2. Tạo object người dùng
         const userData = {
             username: displayName,
             email: email,
         };
 
-        // 3. Lưu vào localStorage (Khóa 'user' phải khớp với Header)
         localStorage.setItem('user', JSON.stringify(userData));
 
-        // 4. Thông báo và điều hướng
         alert(`${isLogin ? 'Đăng nhập' : 'Đăng ký'} thành công!`);
         navigate('/');
 
-        // 5. Làm mới trang để Header cập nhật lại trạng thái mới nhất
         window.location.reload();
     };
 

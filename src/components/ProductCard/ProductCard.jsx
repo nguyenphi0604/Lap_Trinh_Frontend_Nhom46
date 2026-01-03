@@ -1,29 +1,25 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // 1. Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/hooks';
 import { addToCart } from '../../redux/cartSlice';
 import styles from './ProductCard.module.scss';
 
 const ProductCard = ({ product }) => {
     const dispatch = useAppDispatch();
-    const navigate = useNavigate(); // 2. Khởi tạo navigate
+    const navigate = useNavigate();
 
-    // Hàm xử lý chuyển trang chi tiết
     const handleGoToDetail = () => {
         navigate(`/product/${product.id}`);
     };
 
-    // Hàm xử lý thêm vào giỏ hàng (ngăn chuyển trang khi bấm nút)
     const handleAddToCart = (e) => {
-        e.stopPropagation(); // 3. Ngăn chặn sự kiện click lan ra ngoài thẻ card
+        e.stopPropagation();
         dispatch(addToCart(product));
-        // Bạn có thể thêm thông báo toast ở đây nếu muốn chuyên nghiệp hơn
     };
 
     return (
         <div className={styles.card} onClick={handleGoToDetail}>
-            {/* Badge giảm giá tự động nếu có oldPrice */}
             {product.oldPrice && (
                 <div className={styles.badge}>
                     -{Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}%
@@ -32,7 +28,7 @@ const ProductCard = ({ product }) => {
 
             <div className={styles.imagePlaceholder}>
                 <img
-                    src={product.image}
+                    src={product.images?.[0] || product.image}
                     alt={product.name}
                     onError={(e) => e.target.src = 'https://via.placeholder.com/300?text=No+Image'}
                 />

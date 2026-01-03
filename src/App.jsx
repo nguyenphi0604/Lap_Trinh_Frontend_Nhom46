@@ -1,5 +1,5 @@
 import React from 'react';
-import AppRouter from './router/AppRouter'; // <-- Import file router tổng (nhớ đổi tên từ AuthRouter nhé)
+import AppRouter from './router/AppRouter';
 
 function App() {
     return (

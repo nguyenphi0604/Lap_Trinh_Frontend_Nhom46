@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { fetchProducts } from '../../redux/productSlice';
-// Import Link từ react-router-dom để điều hướng
 import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header/Header';
@@ -25,7 +24,6 @@ const Home = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    // Cập nhật categories thêm slug để khớp với Header
     const categories = [
         {
             name: "Cây Ăn Trái",
@@ -56,7 +54,6 @@ const Home = () => {
                     <h1>THỔI HỒN XANH <br/> VÀO KHÔNG GIAN SỐNG</h1>
                     <p>Cung cấp hơn 500+ loại cây giống chất lượng cao, bảo hành 1 đổi 1.</p>
                     <div className={styles.btnGroup}>
-                        {/* Mua ngay có thể dẫn đến trang tất cả sản phẩm */}
                         <button className={styles.primaryBtn} onClick={() => window.scrollTo({top: 800, behavior: 'smooth'})}>MUA NGAY</button>
                         <button className={styles.secondaryBtn}>XEM KHUYẾN MÃI</button>
                     </div>
@@ -87,7 +84,6 @@ const Home = () => {
                 <h2 className={styles.sectionTitle}>DANH MỤC PHỔ BIẾN</h2>
                 <div className={styles.cateGrid}>
                     {categories.map((cat, idx) => (
-                        /* Sử dụng Link để bọc toàn bộ Card danh mục */
                         <Link to={`/category/${cat.slug}`} key={idx} className={styles.cateCard}>
                             <img src={cat.img} alt={cat.name} />
                             <div className={styles.cateOverlay}>

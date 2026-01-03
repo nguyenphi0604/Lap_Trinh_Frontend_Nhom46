@@ -4,14 +4,12 @@
 
 .imageSide {
   flex: 1;
-  // Dùng ảnh nền chất lượng cao
   background: url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80') center/cover;
   position: relative;
-  @media(max-width: 768px) { display: none; } // Ẩn ảnh trên mobile
-
+  @media(max-width: 768px) { display: none; }
   .overlay {
     position: absolute; inset: 0;
-    background: rgba(27, 77, 62, 0.7); // Phủ lớp màu xanh tối
+    background: rgba(27, 77, 62, 0.7);
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     color: white;
 

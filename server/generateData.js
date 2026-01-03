@@ -33,7 +33,13 @@ const createPlant = (id) => {
         price: price,
         oldPrice: isSale ? price + randomInt(2, 10) * 10000 : null,
         description: `Sản phẩm ${baseName} chất lượng cao, phù hợp khí hậu Việt Nam. Cây khỏe, bầu rễ ổn định.`,
-        image: `https://picsum.photos/seed/${id}/400/400`,
+        images: [
+            `https://picsum.photos/seed/${id}-1/400/400`,
+            `https://picsum.photos/seed/${id}-2/400/400`,
+            `https://picsum.photos/seed/${id}-3/400/400`,
+            `https://picsum.photos/seed/${id}-4/400/400`,
+            `https://picsum.photos/seed/${id}-5/400/400`
+        ],
         stock: randomInt(0, 100),
         rating: randomInt(3, 5),
         reviews: randomInt(5, 200)
@@ -53,4 +59,4 @@ const db = {
 };
 
 fs.writeFileSync('./server/db.json', JSON.stringify(db, null, 2));
-console.log("✅ Đã tạo 500 cây cảnh chuẩn Việt Nam vào server/db.json!");
+console.log("Đã tạo 500 cây cảnh vào server/db.json!");

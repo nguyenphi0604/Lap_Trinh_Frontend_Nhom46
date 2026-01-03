@@ -5,7 +5,6 @@ import styles from './Footer.module.scss';
 const Footer = () => {
     return (
         <footer className={styles.footerWrapper}>
-            {/* Phần 1: Đăng ký nhận tin (Newsletter) */}
             <div className={styles.newsletter}>
                 <div className={styles.newsletterContent}>
                     <div className={styles.text}>
@@ -19,10 +18,8 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Phần 2: Nội dung chính (Main Footer) */}
             <div className={styles.mainFooter}>
                 <div className={styles.container}>
-                    {/* Cột 1: Giới thiệu */}
                     <div className={styles.column}>
                         <h4 className={styles.logo}>FINITI<span>GARDEN</span></h4>
                         <p className={styles.desc}>
@@ -35,7 +32,6 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Cột 2: Hỗ trợ khách hàng */}
                     <div className={styles.column}>
                         <h4>HỖ TRỢ KHÁCH HÀNG</h4>
                         <ul>
@@ -47,7 +43,6 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Cột 3: Danh mục nổi bật */}
                     <div className={styles.column}>
                         <h4>DANH MỤC PHỔ BIẾN</h4>
                         <ul>
@@ -59,7 +54,6 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Cột 4: Kết nối & Bản đồ */}
                     <div className={styles.column}>
                         <h4>KẾT NỐI VỚI CHÚNG TÔI</h4>
                         <div className={styles.socials}>
@@ -70,7 +64,6 @@ const Footer = () => {
                         </div>
                         <div className={styles.certification}>
                             <p>Chứng nhận website an toàn</p>
-                            {/* Giả lập hình ảnh chứng nhận */}
                             <div className={styles.badge}>BỘ CÔNG THƯƠNG</div>
                         </div>
                     </div>

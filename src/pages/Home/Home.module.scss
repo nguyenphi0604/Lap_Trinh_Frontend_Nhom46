@@ -1,7 +1,6 @@
 @import '../../styles/variables';
 
-// --- THAY ĐỔI FONT TẠI ĐÂY ---
-$font-heading: 'Montserrat', sans-serif; // Font mới chuẩn tiếng Việt
+$font-heading: 'Montserrat', sans-serif;
 $font-body: 'Inter', sans-serif;
 
 .homeWrapper {
@@ -11,7 +10,6 @@ $font-body: 'Inter', sans-serif;
   font-family: $font-body;
 }
 
-// 1. HERO SECTION
 .hero {
   height: 600px;
   background-image: url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2070&auto=format&fit=crop');
@@ -28,7 +26,7 @@ $font-body: 'Inter', sans-serif;
   .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5); // Tăng độ tối lên 0.5 để chữ trắng nổi hơn
+    background: rgba(0, 0, 0, 0.5);
   }
 
   .heroContent {
@@ -39,17 +37,17 @@ $font-body: 'Inter', sans-serif;
     .subTitle {
       display: block;
       font-size: 1.1rem;
-      letter-spacing: 4px; // Tăng khoảng cách chữ
+      letter-spacing: 4px;
       margin-bottom: 15px;
       color: $accent-lightgreen;
       font-weight: 700;
       text-transform: uppercase;
-      font-family: $font-heading; // Dùng font heading cho subtitle luôn
+      font-family: $font-heading;
     }
 
     h1 {
       font-family: $font-heading;
-      font-size: 4.5rem; // Tăng kích thước
+      font-size: 4.5rem;
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 25px;
@@ -62,12 +60,11 @@ $font-body: 'Inter', sans-serif;
       margin-bottom: 35px;
       opacity: 0.95;
       font-weight: 300;
-      max-width: 700px; // Giới hạn chiều rộng để dễ đọc
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    // ... (Giữ nguyên .btnGroup)
     .btnGroup {
       display: flex;
       gap: 20px;
@@ -101,11 +98,6 @@ $font-body: 'Inter', sans-serif;
   }
 }
 
-// ... (Giữ nguyên FEATURES, CATEGORIES, PRODUCTS - không thay đổi gì, chỉ việc copy lại) ...
-// Để tiết kiệm không gian chat, tôi không paste lại phần giữa, bạn giữ nguyên nhé.
-// Chú ý: .sectionTitle sẽ tự động ăn theo font mới Montserrat.
-
-// 2. FEATURES SECTION (Copy code cũ vào đây)
 .features {
   display: flex;
   justify-content: center;
@@ -137,7 +129,6 @@ $font-body: 'Inter', sans-serif;
   }
 }
 
-// 3. COMMON SECTION STYLES (Copy code cũ vào đây)
 .sectionTitle {
   font-family: $font-heading;
   text-align: center;
@@ -157,7 +148,6 @@ $font-body: 'Inter', sans-serif;
   }
 }
 
-// 4. CATEGORIES SECTION (Copy code cũ vào đây)
 .categories {
   padding: 0 10%;
 
@@ -196,7 +186,6 @@ $font-body: 'Inter', sans-serif;
   }
 }
 
-// 5. PRODUCTS SECTION (Copy code cũ vào đây)
 .products {
   padding: 0 10% 80px;
 
@@ -207,7 +196,6 @@ $font-body: 'Inter', sans-serif;
   }
 }
 
-// 6. ADVICE SECTION
 .adviceSection {
   background-image: url('https://www.genus.gs/cdn/shop/articles/Chris_Hull_72d94b7d-1d1c-4750-9ba9-2161e6ada9e6.jpg?v=1764846107&width=1080');
   padding: 80px 10%;
@@ -245,8 +233,8 @@ $font-body: 'Inter', sans-serif;
 
     .guideBtn {
       padding: 15px 50px;
-      background-color: $accent-lightgreen; // Nút màu nổi bật
-      color: $primary-green; // Chữ màu xanh đậm
+      background-color: $accent-lightgreen;
+      color: $primary-green;
       border: none;
       border-radius: 50px;
       font-weight: 600;
@@ -265,7 +253,6 @@ $font-body: 'Inter', sans-serif;
   }
 }
 
-// SCROLL TO TOP (Giữ nguyên)
 .scrollTopBtn {
   position: fixed;
   bottom: 30px;
@@ -287,7 +274,6 @@ $font-body: 'Inter', sans-serif;
   &:hover { transform: translateY(-5px); background: darken($accent-lightgreen, 10%); }
 }
 
-// Keyframes
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }

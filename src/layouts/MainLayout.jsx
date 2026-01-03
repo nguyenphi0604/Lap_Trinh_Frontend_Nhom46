@@ -8,7 +8,7 @@ const MainLayout = () => {
         <div className="main-layout">
             <Header />
             <div className="content">
-                <Outlet /> {/* Nơi các trang con (Home, Cart) sẽ hiển thị */}
+                <Outlet />
             </div>
             <Footer />
         </div>

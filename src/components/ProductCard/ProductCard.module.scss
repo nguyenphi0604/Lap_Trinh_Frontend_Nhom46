@@ -1,6 +1,5 @@
 @import '../../styles/variables';
 
-// Định nghĩa lại font hoặc import nếu bạn đã để trong variables
 $font-heading: 'Montserrat', sans-serif;
 
 .card {
@@ -84,7 +83,7 @@ $font-heading: 'Montserrat', sans-serif;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    opacity: 0; // Ẩn nút mặc định
+    opacity: 0;
     transform: translateY(10px);
     transition: 0.3s;
 

@@ -1,6 +1,5 @@
 @import '../../styles/variables';
 
-// Các mã màu dự phòng nếu file variables chưa có
 $green: #2d5a27;
 $light-green: #8bc34a;
 $beige: #f5f5dc;
@@ -18,11 +17,10 @@ $beige: #f5f5dc;
     left: 0;
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
 
-    .topStrip { display: none; } // Thu gọn khi cuộn
+    .topStrip { display: none; }
   }
 }
 
-// Tầng 1: Marquee
 .topStrip {
   background-color: #f1f1f1;
   padding: 5px 0;
@@ -30,7 +28,6 @@ $beige: #f5f5dc;
   color: #666;
 }
 
-// Tầng 2: Main Header
 .mainHeader {
   display: flex;
   justify-content: space-between;
@@ -126,7 +123,7 @@ $beige: #f5f5dc;
         padding: 10px 0;
         min-width: 160px;
         border-radius: 4px;
-        display: none; // Mặc định ẩn
+        display: none;
         z-index: 10;
 
         li {
@@ -146,13 +143,12 @@ $beige: #f5f5dc;
       }
 
       &:hover .userDropdown {
-        display: block; // Hiện khi hover vào accountBox
+        display: block;
       }
     }
   }
 }
 
-// Tầng 3: Menu danh mục
 .mainNav {
   background-color: $green;
 

@@ -10,16 +10,14 @@ const Checkout = () => {
     const { cartItems, totalAmount } = useAppSelector(state => state.cart);
     const navigate = useNavigate();
 
-    // State quản lý form
     const [formData, setFormData] = useState({
         name: '', phone: '', address: '', note: ''
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Logic gửi đơn hàng lên Server sẽ viết ở đây
         alert("Đặt hàng thành công! Chúng tôi sẽ liên hệ sớm.");
-        navigate('/'); // Quay về trang chủ
+        navigate('/');
     };
 
     return (
@@ -29,7 +27,6 @@ const Checkout = () => {
                 <h1 className={styles.pageTitle}>Thanh Toán</h1>
 
                 <form className={styles.grid} onSubmit={handleSubmit}>
-                    {/* Cột Trái: Thông tin giao hàng */}
                     <div className={styles.formSection}>
                         <h2><FaMapMarkerAlt /> Thông tin giao hàng</h2>
                         <div className={styles.inputGroup}>
@@ -63,14 +60,13 @@ const Checkout = () => {
                         </div>
                     </div>
 
-                    {/* Cột Phải: Tóm tắt đơn hàng */}
                     <div className={styles.summarySection}>
                         <h2>Đơn hàng của bạn ({cartItems.length} sản phẩm)</h2>
                         <div className={styles.itemList}>
                             {cartItems.map(item => (
                                 <div key={item.id} className={styles.item}>
                                     <div className={styles.imgWrapper}>
-                                        <img src={item.image} alt={item.name} />
+                                        <img src={item.images?.[0] || item.image} alt={item.name} />
                                         <span className={styles.qtyBadge}>{item.quantity}</span>
                                     </div>
                                     <div className={styles.info}>
