@@ -1,0 +1,113 @@
+.editContainer {
+  background-color: #f8fcf9;
+  padding: 50px 0;
+  min-height: 70vh;
+}
+
+.editCard {
+  max-width: 650px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+.editCard .headerSection {
+  text-align: center;
+  margin-bottom: 35px;
+}
+.editCard .headerSection h2 {
+  color: #2d3436;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+.editCard .headerSection p {
+  color: #636e72;
+  font-size: 0.95rem;
+}
+
+.editForm .formGroup {
+  margin-bottom: 22px;
+}
+.editForm .formGroup label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #2d3436;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.editForm .formGroup input,
+.editForm .formGroup textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1.5px solid #dfe6e9;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+.editForm .formGroup input:focus,
+.editForm .formGroup textarea:focus {
+  outline: none;
+  border-color: #27ae60;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.1);
+}
+.editForm .formGroup input::placeholder,
+.editForm .formGroup textarea::placeholder {
+  color: #b2bec3;
+}
+.editForm .formGroup textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+.editForm .buttonGroup {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+}
+.editForm .buttonGroup button {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+.editForm .buttonGroup .cancelBtn {
+  background-color: #f1f2f6;
+  color: #2d3436;
+}
+.editForm .buttonGroup .cancelBtn:hover {
+  background-color: #dfe4ea;
+}
+.editForm .buttonGroup .saveBtn {
+  background-color: #27ae60;
+  color: white;
+}
+.editForm .buttonGroup .saveBtn:hover {
+  background-color: rgb(34.3309859155, 153.1690140845, 84.5070422535);
+  box-shadow: 0 6px 15px rgba(39, 174, 96, 0.25);
+  transform: translateY(-2px);
+}
+.editForm .buttonGroup .saveBtn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .editCard {
+    padding: 25px;
+    margin: 0 15px;
+  }
+  .buttonGroup {
+    flex-direction: column-reverse;
+  }
+}
+
+/*# sourceMappingURL=EditProfile.module.css.map */

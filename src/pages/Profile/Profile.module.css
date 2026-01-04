@@ -1,0 +1,215 @@
+.profileContainer {
+  background-color: #f9fbf9;
+  padding: 40px 0;
+  min-height: 80vh;
+}
+
+.profileCard {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: none;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.profileCard .cardHeader {
+  padding: 25px;
+  text-align: center;
+  background: linear-gradient(135deg, #fdfdfd 0%, #f5f5f5 100%);
+  border-bottom: 1px solid #eee;
+}
+.profileCard .cardHeader .avatarWrapper {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 15px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  border: 3px solid #27ae60;
+  box-shadow: 0 4px 10px rgba(39, 174, 96, 0.2);
+}
+.profileCard .cardHeader h4 {
+  margin: 0;
+  color: #2c3e50;
+  font-weight: 700;
+}
+.profileCard .cardHeader p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+.profileCard .cardBody {
+  padding: 25px;
+}
+
+.orderItem {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #edf2f7;
+  margin-bottom: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.orderItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+.orderItem .orderHeader {
+  padding: 15px 20px;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #edf2f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px 12px 0 0;
+}
+.orderItem .orderHeader .orderId {
+  color: #27ae60;
+  font-weight: 600;
+}
+.orderItem .orderHeader .statusBadge {
+  font-size: 0.75rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.orderItem .orderContent {
+  padding: 20px;
+}
+.orderItem .orderContent .productRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+}
+.orderItem .orderContent .productRow:last-child {
+  border-bottom: none;
+}
+.orderItem .orderContent .productRow .productName {
+  color: #2c3e50;
+}
+.orderItem .orderContent .productRow .productName span {
+  color: #7f8c8d;
+  margin-left: 5px;
+}
+.orderItem .orderFooter {
+  padding: 15px 20px;
+  text-align: right;
+  border-top: 1px solid #edf2f7;
+}
+.orderItem .orderFooter .totalText {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+.orderItem .orderFooter .totalPrice {
+  font-size: 1.2rem;
+  color: #e74c3c;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+.emptyState .icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.editBtn {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  width: 100%;
+  transition: 0.3s;
+}
+.editBtn:hover {
+  background-color: rgb(34.3309859155, 153.1690140845, 84.5070422535);
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+.editBtn .editCard {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.editBtn .editCard .editHeader {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.editBtn .editCard .editHeader h2 {
+  font-weight: 700;
+  color: #2d3436;
+  margin-bottom: 5px;
+}
+.editBtn .editCard .editHeader p {
+  color: #636e72;
+  font-size: 0.9rem;
+}
+.editBtn .editForm .formGroup {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.editBtn .editForm .formGroup label {
+  font-weight: 600;
+  color: #2d3436;
+  font-size: 0.95rem;
+}
+.editBtn .editForm .formGroup input, .editBtn .editForm .formGroup textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.editBtn .editForm .formGroup input:focus, .editBtn .editForm .formGroup textarea:focus {
+  outline: none;
+  border-color: #27ae60;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+.editBtn .editForm .actionButtons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+.editBtn .editForm .actionButtons button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+.editBtn .editForm .actionButtons .cancelBtn {
+  background: #f1f2f6;
+  color: #2d3436;
+}
+.editBtn .editForm .actionButtons .cancelBtn:hover {
+  background: #dfe4ea;
+}
+.editBtn .editForm .actionButtons .saveBtn {
+  background: #27ae60;
+  color: white;
+}
+.editBtn .editForm .actionButtons .saveBtn:hover {
+  background: rgb(34.3309859155, 153.1690140845, 84.5070422535);
+  transform: translateY(-2px);
+}
+
+/*# sourceMappingURL=Profile.module.css.map */

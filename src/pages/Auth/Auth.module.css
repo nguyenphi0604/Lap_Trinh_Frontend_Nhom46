@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.imageSide {
+  flex: 1;
+  background: url("https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80") center/cover;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .imageSide {
+    display: none;
+  }
+}
+.imageSide .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 77, 62, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.imageSide .overlay h2 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+.imageSide .overlay h2 span {
+  color: #4CAF50;
+}
+
+.formSide {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+.formSide .formContent {
+  width: 400px;
+  text-align: center;
+}
+.formSide .formContent h2 {
+  color: #22745e;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.formSide .formContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+.formSide .formContent form input {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+.formSide .formContent form input:focus {
+  border-color: #22745e;
+}
+.formSide .formContent form button {
+  padding: 15px;
+  background: #22745e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.formSide .formContent form button:hover {
+  opacity: 0.9;
+}
+.formSide .formContent .switch {
+  margin-top: 20px;
+  color: #666;
+}
+.formSide .formContent .switch span {
+  color: #22745e;
+  font-weight: bold;
+  cursor: pointer;
+}
+.formSide .formContent .backHome {
+  display: block;
+  margin-top: 20px;
+  color: #999;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=Auth.module.css.map */

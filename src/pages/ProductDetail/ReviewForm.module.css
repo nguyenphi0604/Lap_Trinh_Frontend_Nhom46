@@ -1,0 +1,33 @@
+.reviewFormCard {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+.reviewFormCard .starRating {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 5px;
+}
+.reviewFormCard .starRating .star {
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: 0.2s;
+}
+.reviewFormCard textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.reviewFormCard .submitBtn {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=ReviewForm.module.css.map */
