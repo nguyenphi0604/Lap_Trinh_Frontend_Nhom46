@@ -1,13 +1,18 @@
 import React from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaHeart, FaRegHeart } from 'react-icons/fa'; // Thêm icon Heart
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'; // Thêm useAppSelector
 import { addToCart } from '../../redux/cartSlice';
+import { addToWishlist, removeFromWishlist } from '../../redux/wishlistSlice'; // Thêm action wishlist
 import styles from './ProductCard.module.scss';
 
 const ProductCard = ({ product }) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
+    // Kiểm tra xem sản phẩm đã có trong wishlist chưa
+    const wishlistItems = useAppSelector(state => state.wishlist?.items || []);
+    const isFavorite = wishlistItems.some(item => item.id === product.id);
 
     const handleGoToDetail = () => {
         navigate(`/product/${product.id}`);
@@ -18,8 +23,22 @@ const ProductCard = ({ product }) => {
         dispatch(addToCart(product));
     };
 
+    const handleToggleWishlist = (e) => {
+        e.stopPropagation(); // Ngăn chặn sự kiện click lan ra thẻ card
+        if (isFavorite) {
+            dispatch(removeFromWishlist(product.id));
+        } else {
+            dispatch(addToWishlist(product));
+        }
+    };
+
     return (
         <div className={styles.card} onClick={handleGoToDetail}>
+            {/* Nút Yêu thích */}
+            <div className={styles.wishlistIcon} onClick={handleToggleWishlist}>
+                {isFavorite ? <FaHeart color="#ff4757" /> : <FaRegHeart />}
+            </div>
+
             {product.oldPrice && (
                 <div className={styles.badge}>
                     -{Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100)}%
@@ -40,11 +59,11 @@ const ProductCard = ({ product }) => {
 
                 <div className={styles.priceRow}>
                     <span className={styles.price}>
-                        {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)}
+                        {product.price.toLocaleString()}đ
                     </span>
                     {product.oldPrice && (
                         <span className={styles.oldPrice}>
-                            {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.oldPrice)}
+                            {product.oldPrice.toLocaleString()}đ
                         </span>
                     )}
                 </div>
@@ -57,10 +76,7 @@ const ProductCard = ({ product }) => {
                 </div>
             </div>
 
-            <button
-                className={styles.addBtn}
-                onClick={handleAddToCart}
-            >
+            <button className={styles.addBtn} onClick={handleAddToCart}>
                 Thêm vào giỏ
             </button>
         </div>

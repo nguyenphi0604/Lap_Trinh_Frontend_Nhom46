@@ -1,0 +1,292 @@
+.homeWrapper {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  position: relative;
+  font-family: "Inter", sans-serif;
+}
+
+.hero {
+  height: 600px;
+  background-image: url("https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2070&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.hero .heroContent {
+  position: relative;
+  z-index: 2;
+  animation: slideUp 1s ease-out;
+}
+.hero .heroContent .subTitle {
+  display: block;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+  color: #4CAF50;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+}
+.hero .heroContent h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+.hero .heroContent p {
+  font-size: 1.3rem;
+  margin-bottom: 35px;
+  opacity: 0.95;
+  font-weight: 300;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero .heroContent .btnGroup {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.hero .heroContent .btnGroup button {
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+.hero .heroContent .btnGroup .primaryBtn {
+  background: #22745e;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(34, 116, 94, 0.4);
+}
+.hero .heroContent .btnGroup .primaryBtn:hover {
+  transform: translateY(-3px);
+  background: rgb(39.78, 135.72, 109.98);
+}
+.hero .heroContent .btnGroup .secondaryBtn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+.hero .heroContent .btnGroup .secondaryBtn:hover {
+  background: white;
+  color: #22745e;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px 10%;
+  margin-top: -50px;
+  position: relative;
+  z-index: 3;
+}
+.features .featureItem {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  flex: 1;
+  transition: 0.3s;
+}
+.features .featureItem .iconBox {
+  font-size: 2.5rem;
+  color: #22745e;
+  margin-bottom: 15px;
+}
+.features .featureItem h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+.features .featureItem p {
+  font-size: 0.9rem;
+  color: #777;
+}
+.features .featureItem:hover {
+  transform: translateY(-10px);
+}
+
+.sectionTitle {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-size: 2.2rem;
+  color: #22745e;
+  margin: 60px 0 40px;
+  position: relative;
+}
+.sectionTitle:after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #4CAF50;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.categories {
+  padding: 0 10%;
+}
+.categories .cateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.categories .cateCard {
+  position: relative;
+  height: 250px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.categories .cateCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+.categories .cateCard .cateOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+.categories .cateCard .cateOverlay h3 {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+}
+.categories .cateCard:hover img {
+  transform: scale(1.1);
+}
+
+.products {
+  padding: 0 10% 80px;
+}
+.products .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.adviceSection {
+  background-image: url("https://www.genus.gs/cdn/shop/articles/Chris_Hull_72d94b7d-1d1c-4750-9ba9-2161e6ada9e6.jpg?v=1764846107&width=1080");
+  padding: 80px 10%;
+  text-align: center;
+  color: white;
+  margin-bottom: 0;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.adviceSection .adviceContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.adviceSection .adviceContent .iconWrapper {
+  font-size: 3rem;
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+.adviceSection .adviceContent h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+.adviceSection .adviceContent p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+.adviceSection .adviceContent .guideBtn {
+  padding: 15px 50px;
+  background-color: #4CAF50;
+  color: #22745e;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+.adviceSection .adviceContent .guideBtn:hover {
+  transform: translateY(-5px) scale(1.05);
+  background-color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #4CAF50;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+  font-size: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scrollTopBtn:hover {
+  transform: translateY(-5px);
+  background: rgb(60.5577689243, 139.4422310757, 63.7450199203);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .features {
+    flex-direction: column;
+    padding: 30px 5%;
+    margin-top: 20px;
+  }
+  .adviceSection {
+    padding: 60px 5%;
+  }
+  .adviceSection h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/*# sourceMappingURL=Home.module.css.map */

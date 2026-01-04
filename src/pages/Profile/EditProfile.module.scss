@@ -1,0 +1,137 @@
+// Variables
+$primary-green: #27ae60;
+$text-main: #2d3436;
+$text-muted: #636e72;
+$white: #ffffff;
+$bg-light: #f8fcf9;
+$border-color: #dfe6e9;
+$shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+
+.editContainer {
+  background-color: $bg-light;
+  padding: 50px 0;
+  min-height: 70vh;
+}
+
+.editCard {
+  max-width: 650px;
+  margin: 0 auto;
+  background: $white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: $shadow;
+  border: 1px solid rgba(0,0,0,0.03);
+
+  .headerSection {
+    text-align: center;
+    margin-bottom: 35px;
+
+    h2 {
+      color: $text-main;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: $text-muted;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.editForm {
+  .formGroup {
+    margin-bottom: 22px;
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: $text-main;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input,
+    textarea {
+      width: 100%; // Đảm bảo input không bị ngắn
+      padding: 14px 18px;
+      border: 1.5px solid $border-color;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background-color: #fafafa;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-green;
+        background-color: $white;
+        box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.1);
+      }
+
+      &::placeholder {
+        color: #b2bec3;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+  }
+
+  .buttonGroup {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+
+    button {
+      flex: 1;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .cancelBtn {
+      background-color: #f1f2f6;
+      color: $text-main;
+
+      &:hover {
+        background-color: #dfe4ea;
+      }
+    }
+
+    .saveBtn {
+      background-color: $primary-green;
+      color: white;
+
+      &:hover {
+        background-color: darken($primary-green, 5%);
+        box-shadow: 0 6px 15px rgba(39, 174, 96, 0.25);
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .editCard {
+    padding: 25px;
+    margin: 0 15px;
+  }
+
+  .buttonGroup {
+    flex-direction: column-reverse;
+  }
+}

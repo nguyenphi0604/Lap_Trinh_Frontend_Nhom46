@@ -6,10 +6,11 @@ import Cart from '../pages/Cart/Cart';
 import Category from '../pages/Category/Category';
 import Checkout from '../pages/Checkout/Checkout';
 import Auth from '../pages/Auth/Auth';
-import SearchResults from '../pages/SearchResults/SearchResults'; // Kiểm tra lại đường dẫn file của bạn
+import SearchResults from '../pages/SearchResults/SearchResults';
 import Success from '../pages/Success/Success';
 import Profile from '../pages/Profile/Profile';
-import WishlistPage from '../pages/Wishlist/Wishlist'; // Hoặc đường dẫn thực tế của bạn
+import WishlistPage from '../pages/Wishlist/Wishlist';
+import EditProfile from '../pages/Profile/EditProfile'; // FIX: Thêm dấu .. để ra ngoài thư mục router
 import NotFound from '../pages/NotFound/NotFound';
 
 const AppRouter = () => {
@@ -21,11 +22,13 @@ const AppRouter = () => {
             <Route path="/category/:type" element={<Category />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/search" element={<SearchResults />} />
             <Route path="/success" element={<Success />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/edit" element={<EditProfile />} />
             <Route path="/wishlist" element={<WishlistPage />} />
+
+            {/* Luôn để Route NotFound ở cuối cùng */}
             <Route path="*" element={<NotFound />} />
         </Routes>
     );

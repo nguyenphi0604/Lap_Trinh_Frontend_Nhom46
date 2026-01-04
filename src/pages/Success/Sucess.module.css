@@ -1,0 +1,83 @@
+.successWrapper {
+  background-color: #f8fdf9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.successWrapper .container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+}
+.successWrapper .contentCard {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+}
+.successWrapper .contentCard .iconBox {
+  font-size: 70px;
+  color: #27ae60;
+  margin-bottom: 20px;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.successWrapper .contentCard .title {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.successWrapper .contentCard .message {
+  color: #7f8c8d;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+.successWrapper .contentCard .buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.successWrapper .contentCard .buttonGroup button {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.successWrapper .contentCard .buttonGroup .viewOrderBtn {
+  background-color: #27ae60;
+  color: white;
+}
+.successWrapper .contentCard .buttonGroup .viewOrderBtn:hover {
+  background-color: #219150;
+  transform: translateY(-2px);
+}
+.successWrapper .contentCard .buttonGroup .homeBtn {
+  background-color: #f1f2f6;
+  color: #2f3542;
+}
+.successWrapper .contentCard .buttonGroup .homeBtn:hover {
+  background-color: #dfe4ea;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=Sucess.module.css.map */

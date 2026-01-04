@@ -1,9 +1,17 @@
+// 1. Variables
 $primary-color: #27ae60;
 $secondary-color: #2ecc71;
 $text-dark: #2d3436;
 $text-light: #636e72;
 $border-color: #dfe6e9;
 
+// 2. Global Animations
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// 3. Layout Wrapper
 .wrapper {
   background-color: #ffffff;
 }
@@ -14,6 +22,7 @@ $border-color: #dfe6e9;
   padding: 20px;
 }
 
+// 4. Components
 .breadcrumb {
   display: flex;
   align-items: center;
@@ -209,6 +218,104 @@ $border-color: #dfe6e9;
   }
 }
 
+// 5. Review Section
+.reviewSection {
+  margin-top: 80px;
+  padding-top: 50px;
+  border-top: 2px solid #f8f9fa;
+
+  .sectionTitle {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+    color: $text-dark;
+  }
+}
+
+.reviewContent {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 50px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reviewFormCard {
+  background: #fdfdfd;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid $border-color;
+
+  h3 { margin-bottom: 20px; font-size: 1.2rem; }
+
+  .starRating {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    .star { font-size: 1.5rem; cursor: pointer; transition: 0.2s; }
+  }
+
+  textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    resize: none;
+    font-family: inherit;
+    &:focus { outline: 1px solid $primary-color; }
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 12px;
+    background: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover { background: darken($primary-color, 5%); }
+  }
+}
+
+.reviewList {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 15px;
+
+  &::-webkit-scrollbar { width: 5px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background: #eee; border-radius: 10px; }
+
+  .reviewItem {
+    padding: 20px;
+    border-bottom: 1px solid #f1f1f1;
+    &:last-child { border-bottom: none; }
+
+    .revUser {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      strong { color: $text-dark; }
+      span { font-size: 0.8rem; color: $text-light; }
+    }
+
+    .revStars {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: #ffc107; // Màu sao mặc định
+    }
+
+    p { color: #555; line-height: 1.6; font-size: 0.95rem; margin: 0; }
+  }
+}
+
+// 6. Related Section
 .relatedSection {
   margin-top: 50px;
   border-top: 1px solid $border-color;
@@ -230,6 +337,7 @@ $border-color: #dfe6e9;
   }
 }
 
+// 7. Loading State
 .loadingWrapper {
   min-height: 100vh;
   display: flex;
@@ -253,5 +361,3 @@ $border-color: #dfe6e9;
     animation: spin 1s linear infinite;
   }
 }
-
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }

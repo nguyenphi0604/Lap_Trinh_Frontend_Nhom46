@@ -1,12 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'; // Thêm useNavigate
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import styles from './Profile.module.scss';
 
 const Profile = () => {
+    const navigate = useNavigate();
     const orders = useSelector(state => state.orders?.history || []);
-    const userProfile = useSelector(state => state.orders?.userProfile);
+    const userProfile = useSelector(state => state.orders?.userProfile || {});
 
     return (
         <div className={styles.profileContainer}>
@@ -17,10 +19,16 @@ const Profile = () => {
                         <div className={styles.profileCard}>
                             <div className={styles.cardHeader}>
                                 <div className={styles.avatarWrapper}>👤</div>
-                                <h4>{userProfile.name}</h4>
-                                <p>{userProfile.email}</p>
+                                <h4>{userProfile.name || "Chưa có tên"}</h4>
+                                <p>{userProfile.email || "Chưa có email"}</p>
                             </div>
-                            <button className={styles.editBtn}>Chỉnh sửa hồ sơ</button>
+                            {/* Chuyển hướng khi click */}
+                            <button
+                                className={styles.editBtn}
+                                onClick={() => navigate('/profile/edit')}
+                            >
+                                Chỉnh sửa hồ sơ
+                            </button>
                         </div>
                     </div>
 
@@ -36,8 +44,7 @@ const Profile = () => {
                                         <span className="badge bg-warning text-dark">{order.status}</span>
                                     </div>
 
-                                    {/* HIỂN THỊ THÔNG TIN KHÁCH ĐÃ ĐIỀN */}
-                                    <div className="bg-light p-2 mt-2 rounded" style={{fontSize: '0.85rem'}}>
+                                    <div className="bg-light p-3 mt-2 rounded" style={{fontSize: '0.85rem'}}>
                                         <p className="mb-1">📍 <strong>Người nhận:</strong> {order.customerInfo?.name}</p>
                                         <p className="mb-1">📞 <strong>SĐT:</strong> {order.customerInfo?.phone}</p>
                                         <p className="mb-0">🏠 <strong>Địa chỉ:</strong> {order.customerInfo?.address}</p>

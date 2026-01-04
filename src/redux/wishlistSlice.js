@@ -1,33 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-    // Đảm bảo tên là wishlistItems (hoặc items tùy bạn chọn, nhưng phải khớp với Selector)
-    wishlistItems: [],
-};
-
 const wishlistSlice = createSlice({
     name: 'wishlist',
-    initialState,
+    initialState: {
+        // Lấy dữ liệu từ LocalStorage để không bị mất khi F5 trang
+        items: JSON.parse(localStorage.getItem('wishlist')) || [],
+    },
     reducers: {
-        // Hàm này dùng cho nút trái tim ở trang chi tiết
-        toggleWishlist: (state, action) => {
-            const productId = action.payload;
-            const index = state.wishlistItems.indexOf(productId);
-            if (index >= 0) {
-                state.wishlistItems.splice(index, 1);
-            } else {
-                state.wishlistItems.push(productId);
+        // Hàm thêm vào yêu thích
+        addToWishlist: (state, action) => {
+            const newItem = action.payload;
+            const existingItem = state.items.find(item => item.id === newItem.id);
+            if (!existingItem) {
+                state.items.push(newItem);
+                // Lưu vào LocalStorage
+                localStorage.setItem('wishlist', JSON.stringify(state.items));
             }
         },
-        // Hàm này dùng cho nút xóa ở trang Wishlist (cho đúng tên bạn đang gọi)
+        // Hàm xóa khỏi yêu thích
         removeFromWishlist: (state, action) => {
-            const productId = action.payload;
-            state.wishlistItems = state.wishlistItems.filter(id => id !== productId);
-        },
-    },
+            state.items = state.items.filter(item => item.id !== action.payload);
+            // Cập nhật lại LocalStorage
+            localStorage.setItem('wishlist', JSON.stringify(state.items));
+        }
+    }
 });
 
-// QUAN TRỌNG: Bạn phải export đúng tên này ra
-export const { toggleWishlist, removeFromWishlist } = wishlistSlice.actions;
+// QUAN TRỌNG: Kiểm tra dòng này xem đã có addToWishlist chưa
+export const { addToWishlist, removeFromWishlist } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer;

@@ -1,0 +1,199 @@
+.wrapper {
+  background: #f8f9fa;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.pageTitle {
+  font-family: "Montserrat", sans-serif;
+  color: #22745e;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formSection {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+.formSection h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.formSection .inputGroup {
+  margin-bottom: 20px;
+}
+.formSection .inputGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
+}
+.formSection .inputGroup .inputIcon {
+  position: relative;
+}
+.formSection .inputGroup .inputIcon svg {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+.formSection .inputGroup .inputIcon input {
+  padding-left: 40px;
+}
+.formSection .inputGroup input, .formSection .inputGroup textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+.formSection .inputGroup input:focus, .formSection .inputGroup textarea:focus {
+  border-color: #22745e;
+  box-shadow: 0 0 0 3px rgba(34, 116, 94, 0.1);
+}
+.formSection .inputGroup textarea {
+  height: 100px;
+  resize: none;
+}
+
+.summarySection {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
+.summarySection h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+.summarySection .itemList {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 5px;
+}
+.summarySection .itemList .item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f5f5f5;
+  padding-bottom: 15px;
+}
+.summarySection .itemList .item .imgWrapper {
+  position: relative;
+}
+.summarySection .itemList .item .imgWrapper img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+.summarySection .itemList .item .imgWrapper .qtyBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #666;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.summarySection .itemList .item .info {
+  flex: 1;
+}
+.summarySection .itemList .item .info h4 {
+  font-size: 0.95rem;
+  margin-bottom: 3px;
+}
+.summarySection .itemList .item .info p {
+  font-size: 0.8rem;
+  color: #999;
+}
+.summarySection .itemList .item .price {
+  font-weight: bold;
+  color: #333;
+}
+.summarySection .calc .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: #666;
+}
+.summarySection .calc hr {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px dashed #ddd;
+}
+.summarySection .calc .total {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: bold;
+  align-items: center;
+}
+.summarySection .calc .total .totalPrice {
+  font-size: 1.5rem;
+  color: #22745e;
+}
+.summarySection .btnOrder {
+  width: 100%;
+  margin-top: 25px;
+  padding: 18px;
+  background: #22745e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: "Montserrat", sans-serif;
+}
+.summarySection .btnOrder:hover {
+  background: rgb(28.22, 96.28, 78.02);
+  box-shadow: 0 5px 15px rgba(34, 116, 94, 0.3);
+}
+.summarySection .note {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/*# sourceMappingURL=Checkout.module.css.map */

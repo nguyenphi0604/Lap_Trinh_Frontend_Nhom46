@@ -1,0 +1,121 @@
+.wishlistWrapper {
+  background-color: #f9fbf9;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 800;
+  color: #333;
+}
+
+.emptyState {
+  text-align: center;
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+.emptyState img {
+  width: 120px;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+.emptyState .btnExplore {
+  display: inline-block;
+  background: #22745e;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.wishlistCard {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+.wishlistCard:hover {
+  transform: translateY(-5px);
+}
+.wishlistCard .imageBox {
+  position: relative;
+  height: 200px;
+}
+.wishlistCard .imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.wishlistCard .imageBox .removeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  color: #ff4757;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.wishlistCard .content {
+  padding: 20px;
+}
+.wishlistCard .content h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+.wishlistCard .content .price {
+  color: #22745e;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.wishlistCard .actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 15px;
+}
+.wishlistCard .actions button, .wishlistCard .actions a {
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-decoration: none;
+}
+.wishlistCard .actions .btnDetail {
+  background: #f1f2f6;
+  color: #2f3542;
+}
+.wishlistCard .actions .btnAddCart {
+  background: #22745e;
+  color: white;
+}
+
+/*# sourceMappingURL=Wishlist.module.css.map */
