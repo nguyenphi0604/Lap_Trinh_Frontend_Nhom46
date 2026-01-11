@@ -61,7 +61,7 @@ const realProductTemplates = [
         baseName: "Ổi Tứ Quý",
         category: "CÂY ĂN TRÁI",
         images: [
-            "https://bizweb.dktcdn.net/thumb/large/100/187/410/files/oi-gang-1.jpg?v=1494643883997",
+            "https://bizweb.dktcdn.thumb/large/100/187/410/files/oi-gang-1.jpg?v=1494643883997",
             "https://xoaisaydeo.com/wp-content/uploads/2025/10/oi-tu-quy-3.jpg",
             "https://giongcay.net/uploads/images/images/P1160404.JPG",
             "https://xoaisaydeo.com/wp-content/uploads/2025/10/oi-tu-quy-2.jpg",
@@ -300,7 +300,7 @@ const realProductTemplates = [
 ];
 
 const variations = [
-    "Giống F1", "Cây Cho Trái", "Gốc Cổ Thụ", "Hàng VIP", "Size Lớn", 
+    "Giống F1", "Cây Cho Trái", "Gốc Cổ Thụ", "Hàng VIP", "Size Lớn",
     "Chậu Nhựa", "Bầu Rễ Ổn Định", "Cây Công Trình", "Hàng Tuyển Chọn", "Sản Phẩm Đang Hot"
 ];
 
@@ -308,12 +308,13 @@ const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + mi
 
 const plantList = [];
 let idCounter = 1;
+const quantityPerType = 20;
 
-realProductTemplates.forEach((template) => {
-    for (let i = 0; i < 20; i++) {
+for (let i = 0; i < quantityPerType; i++) {
+    realProductTemplates.forEach((template) => {
         const suffix = variations[i % variations.length];
         const price = randomInt(15, 200) * 10000;
-        
+
         plantList.push({
             id: idCounter++,
             name: `${template.baseName} - ${suffix}`,
@@ -321,13 +322,13 @@ realProductTemplates.forEach((template) => {
             price: price,
             oldPrice: Math.random() > 0.5 ? price + 50000 : null,
             description: `Cây ${template.baseName} chuẩn giống, được tuyển chọn kỹ lưỡng. ${suffix} phù hợp cho sân vườn hoặc trang trại.`,
-            images: template.images, 
+            images: template.images,
             stock: randomInt(10, 50),
             rating: randomInt(4, 5),
             reviews: randomInt(10, 100)
         });
-    }
-});
+    });
+}
 
 const db = {
     products: plantList,
@@ -336,5 +337,5 @@ const db = {
     orders: []
 };
 
-fs.writeFileSync('./server/db.json', JSON.stringify(db, null, 2));
-console.log(`Tạo thành công ${plantList.length} sản phẩm`);
+fs.writeFileSync('./db.json', JSON.stringify(db, null, 2));
+console.log(`Đã tạo thành công ${plantList.length} sản phẩm`);
